@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
       this.authentication.register(this.model).subscribe(() => {
           alert('Registration Successful');
       }, error => {
-        console.log(error);
+        alert(error);
       });
   }
   cancel() {
