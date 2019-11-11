@@ -2,3 +2,9 @@
 /*"../ChatingAppClient/node_modules/bootstrap/dist/css/bootstrap.min.css",*/
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
+body{
+    background-image: url("./assets/images/registerbg.jpg");
+    background-size: cover;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+   
+}

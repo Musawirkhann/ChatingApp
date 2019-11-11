@@ -19,13 +19,12 @@ namespace ChatingApp.API.Controllers
     {
         private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;
-        private readonly DataContext _context;
-        public AuthenticationController(IAuthRepository authRepository, DataContext context,
+        public AuthenticationController(IAuthRepository authRepository,
         IConfiguration config)
         {
             _authRepository = authRepository;
             _config = config;
-            _context = context;
+
         }
 
         [HttpPost("register")]
@@ -51,8 +50,9 @@ namespace ChatingApp.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login(LoginDto loginDto)
         {
+
             var userInDb = await _authRepository.Login(loginDto.Username.ToLower(), loginDto.Password);
-            if (loginDto == null)
+            if (userInDb == null)
                 return Unauthorized();
             var claims = new[]
             {

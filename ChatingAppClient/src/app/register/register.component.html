@@ -1,0 +1,31 @@
+<div class="register-wrapper">
+  <form #registerForm="ngForm" (ngSubmit)="register()" class="form">
+    <img src="../../assets/images/avatar1.jpg" alt="" />
+    <h2>Register</h2>
+    <div class="input-group">
+      <input
+        type="text"
+        name="username"
+        id="username"
+        [(ngModel)]="model.username"
+        required
+      />
+      <label for="username">User Name</label>
+    </div>
+    <div class="input-group">
+      <input
+        type="password"
+        name="password"
+        id="password"
+        [(ngModel)]="model.password"
+        required
+      />
+      <label for="password">Password</label>
+    </div>
+    <div class="row">
+      <input type="submit" value="Cancel" (click)="cancel()" class="cancel-btn" />
+      <input type="submit" value="Register" class="register-btn" />
+    </div>
+    <a href="" class="already-reg">Already Registered??</a>
+  </form>
+</div>

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ChatingApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20191104091037_AddUserTbl")]
-    partial class AddUserTbl
+    [Migration("20191105115550_Modifiedtables")]
+    partial class Modifiedtables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
