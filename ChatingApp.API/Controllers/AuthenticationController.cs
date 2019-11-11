@@ -27,12 +27,6 @@ namespace ChatingApp.API.Controllers
             _config = config;
             _context = context;
         }
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var users = await _context.Users.ToListAsync();
-            return Ok(users);
-        }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register(RegisterDto registerDto)
