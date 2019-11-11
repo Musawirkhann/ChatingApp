@@ -1,10 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 /*"../ChatingAppClient/node_modules/bootstrap/dist/css/bootstrap.min.css",*/
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../node_modules/bootswatch/dist/united/bootstrap.min.css";
 @import "../node_modules/font-awesome/css/font-awesome.min.css";
-body{
-    background-image: url("./assets/images/registerbg.jpg");
-    background-size: cover;
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-   
+@import "../node_modules/alertifyjs/build/css/alertify.min.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+body {
+  background-image: url("./assets/images/registerbg.jpg");
+  background-size: cover;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }

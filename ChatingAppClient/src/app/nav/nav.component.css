@@ -1,0 +1,7 @@
+.ctr{
+    margin-right: 30px;
+    margin-left: 30px;
+}
+.dropdown-toggle, .dropdown-item{
+    cursor: pointer;
+}
