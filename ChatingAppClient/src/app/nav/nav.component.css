@@ -5,3 +5,6 @@
 .dropdown-toggle, .dropdown-item{
     cursor: pointer;
 }
+ .form {
+     margin-left: 600px;
+ }
