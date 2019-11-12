@@ -1,3 +1,4 @@
+using System;
 using Microsoft.AspNetCore.Http;
 
 namespace ChatingApp.API.Helpers
@@ -10,6 +11,13 @@ namespace ChatingApp.API.Helpers
             response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
             response.Headers.Add("Access-Control-Allow-Origin", "*");
 
+        }
+        public static int CalculateAge(this DateTime datetime)
+        {
+            var Age = DateTime.Today.Year - datetime.Year;
+            if (datetime.AddYears(Age) > DateTime.Today)
+                Age--;
+            return Age;
         }
     }
 }
