@@ -22,6 +22,11 @@ namespace ChatingApp.API.Data
             _context.Remove(entity);
         }
 
+        // public async Task<Photo> GetPhoto(int Id)
+        // {
+        //     var photo = await _context.Photos
+        // }
+
         public async Task<User> GetUser(int Id)
         {
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(u => u.Id == Id);
