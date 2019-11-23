@@ -64,7 +64,7 @@ namespace ChatingApp.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)  //Seed seeder
         {
             if (env.IsDevelopment())
             {
@@ -88,7 +88,7 @@ namespace ChatingApp.API
             }
 
             //app.UseHttpsRedirection();
-            // seeder.UserSeed();
+            //seeder.UserSeed();
             app.UseCors(c => c.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             app.UseAuthentication();
             app.UseMvc();

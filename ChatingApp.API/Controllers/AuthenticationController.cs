@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using AutoMapper;
 
 namespace ChatingApp.API.Controllers
 {
@@ -19,11 +20,13 @@ namespace ChatingApp.API.Controllers
     {
         private readonly IAuthRepository _authRepository;
         private readonly IConfiguration _config;
+        private readonly IMapper _mapper;
         public AuthenticationController(IAuthRepository authRepository,
-        IConfiguration config)
+        IConfiguration config, IMapper mapper)
         {
             _authRepository = authRepository;
             _config = config;
+            _mapper = mapper;
 
         }
 
@@ -71,9 +74,11 @@ namespace ChatingApp.API.Controllers
             var tokenhandler = new JwtSecurityTokenHandler();
             var token = tokenhandler.CreateToken(tokenDescriptor);
 
+            var user = _mapper.Map<UserListDto>(userInDb);
             return Ok(new
             {
-                token = tokenhandler.WriteToken(token)
+                token = tokenhandler.WriteToken(token),
+                user
             });
 
         }
