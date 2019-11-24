@@ -7,9 +7,11 @@ using ChatingApp.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using ChatingApp.API.Helpers;
 
 namespace ChatingApp.API.Controllers
 {
+    [ServiceFilter(typeof(LogUserActivity))]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
@@ -29,7 +31,7 @@ namespace ChatingApp.API.Controllers
             var model = _mapper.Map<IEnumerable<UserListDto>>(users);
             return Ok(model);
         }
-        [HttpGet("{id}", Name="GetUser")]
+        [HttpGet("{id}", Name = "GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);

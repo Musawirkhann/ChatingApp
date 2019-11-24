@@ -59,6 +59,7 @@ namespace ChatingApp.API
                     ValidateAudience = false
                 };
             });
+            services.AddScoped<LogUserActivity>();
 
 
         }
