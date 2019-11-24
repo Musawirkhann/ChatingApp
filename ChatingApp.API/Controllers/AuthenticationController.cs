@@ -41,13 +41,11 @@ namespace ChatingApp.API.Controllers
             if (await _authRepository.UserExists(registerDto.Username))
                 return BadRequest("UserName is already Exist");
 
-            var User = new User
-            {
-                UserName = registerDto.Username
-            };
+            var Usercreate = _mapper.Map<User>(registerDto);
 
-            var CareatedUser = await _authRepository.Register(User, registerDto.Password);
-            return StatusCode(201);
+            var createdUser = await _authRepository.Register(Usercreate, registerDto.Password);
+            var UserReturn = _mapper.Map<UserDetailDto>(createdUser);
+            return CreatedAtRoute("GetUser", new { controller = "Users", id = createdUser.Id }, UserReturn);
 
         }
         [HttpPost("login")]

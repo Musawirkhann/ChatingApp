@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,15 +37,15 @@
   border-radius: 10px;
   pointer-events: none;
 }
-.form img {
+/* .form img {
   position: absolute;
   top: -50px;
   left: calc(50% - 50px);
   width: 23%;
   background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
-}
-.form h2 {
+} */
+/* .form h2 {
   text-align: center;
   letter-spacing: 1px;
   margin-bottom: 2rem;
@@ -109,4 +109,4 @@
 }
 .already-reg {
   color: inherit;
-}
+} */ 

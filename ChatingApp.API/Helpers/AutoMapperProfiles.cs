@@ -31,6 +31,7 @@ namespace ChatingApp.API.Helpers
             CreateMap<UserUpdateDto, User>();
             CreateMap<Photo, PhotoForReturnDto>();
             CreateMap<PhotosForCreationDto, Photo>();
+            CreateMap<RegisterDto, User>();
         }
 
     }

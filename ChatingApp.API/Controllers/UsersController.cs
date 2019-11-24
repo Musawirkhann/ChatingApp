@@ -29,7 +29,7 @@ namespace ChatingApp.API.Controllers
             var model = _mapper.Map<IEnumerable<UserListDto>>(users);
             return Ok(model);
         }
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name="GetUser")]
         public async Task<IActionResult> GetUser(int id)
         {
             var user = await _repo.GetUser(id);

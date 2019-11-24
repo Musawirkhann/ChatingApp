@@ -34,7 +34,7 @@
       </ul>
       <div *ngIf="loggedIn()" class="dropdown show" dropdown>
         <span>
-          <img src="{{photoUrl}}" alt="">
+          <img src="{{photoUrl || '../../../../assets/images/user.png'}}" alt="">
         </span>
         <a class="dropdown-toggle text-light" dropdownToggle>
           Welcome
