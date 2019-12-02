@@ -24,10 +24,19 @@ namespace ChatingApp.API.Data
                 .WithMany(l => l.Likees)
                 .HasForeignKey(l => l.LikerId)
                 .OnDelete(DeleteBehavior.Cascade);
+            modelBuilder.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany(m => m.MessagesSent)
+                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Message>()
+               .HasOne(m => m.Recipient)
+               .WithMany(m => m.MessagesReceived)
+               .OnDelete(DeleteBehavior.Restrict);
         }
         public DbSet<Value> Values { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Like> Likes { get; set; }
+        public DbSet<Message> Messages { get; set; }
     }
 }
