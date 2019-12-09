@@ -31,10 +31,16 @@
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link " [routerLink]="['/messages']">Messages</a>
         </li>
+        <li *appHasRole="['Admin', 'Moderator']" class="nav-item" routerLinkActive="active">
+          <a class="nav-link " [routerLink]="['/admin']">Admin</a>
+        </li>
       </ul>
       <div *ngIf="loggedIn()" class="dropdown show" dropdown>
         <span>
-          <img src="{{photoUrl || '../../../../assets/images/user.png'}}" alt="">
+          <img
+            src="{{ photoUrl || '../../../../assets/images/user.png' }}"
+            alt=""
+          />
         </span>
         <a class="dropdown-toggle text-light" dropdownToggle>
           Welcome

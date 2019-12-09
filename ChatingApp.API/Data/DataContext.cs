@@ -1,9 +1,11 @@
 using ChatingApp.API.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ChatingApp.API.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : IdentityDbContext<User, Role, int, IdentityUserClaim<int>, UserRole, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
@@ -12,6 +14,23 @@ namespace ChatingApp.API.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<UserRole>(userRole =>
+            {
+                userRole.HasKey(ur => new { ur.UserId, ur.RoleId });
+
+                userRole.HasOne(ur => ur.Role)
+                        .WithMany(ur => ur.UserRoles)
+                        .HasForeignKey(ur => ur.RoleId)
+                        .IsRequired();
+
+                userRole.HasOne(ur => ur.User)
+                       .WithMany(ur => ur.UserRoles)
+                       .HasForeignKey(ur => ur.UserId)
+                       .IsRequired();
+            });
+
             modelBuilder.Entity<Like>()
                 .HasKey(l => new { l.LikerId, l.LikeeId });
             modelBuilder.Entity<Like>()
@@ -32,9 +51,9 @@ namespace ChatingApp.API.Data
                .HasOne(m => m.Recipient)
                .WithMany(m => m.MessagesReceived)
                .OnDelete(DeleteBehavior.Restrict);
+            modelBuilder.Entity<Photo>().HasQueryFilter(p => p.IsApproved);
         }
         public DbSet<Value> Values { get; set; }
-        public DbSet<User> Users { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Message> Messages { get; set; }

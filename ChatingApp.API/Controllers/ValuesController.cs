@@ -21,6 +21,7 @@ namespace ChatingApp.API.Controllers
             _context = context;
         }
         // GET api/values
+        [Authorize(Roles = "Admin")]
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -29,6 +30,7 @@ namespace ChatingApp.API.Controllers
         }
 
         // GET api/values/5
+        [Authorize(Roles = "Member")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {

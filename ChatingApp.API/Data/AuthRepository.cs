@@ -17,8 +17,8 @@ namespace ChatingApp.API.Data
             var user = await _context.Users.Include(p => p.Photos).FirstOrDefaultAsync(x => x.UserName == username);
             if (user == null)
                 return null;
-            if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                return null;
+            // if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
+            //     return null;
             return user;
         }
 
@@ -41,8 +41,8 @@ namespace ChatingApp.API.Data
         {
             byte[] PasswordHash, PasswordSalt;
             CreatePasswordHash(password, out PasswordHash, out PasswordSalt);
-            user.PasswordHash = PasswordHash;
-            user.PasswordSalt = PasswordSalt;
+            // user.PasswordHash = PasswordHash;
+            // user.PasswordSalt = PasswordSalt;
             await _context.Users.AddAsync(user);
             await _context.SaveChangesAsync();
 

@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace ChatingApp.API.Controllers
 {
     [ServiceFilter(typeof(LogUserActivity))]
-    [Authorize]
+    //[Authorize]
     [Route("api/users/{userId}/[controller]")]
     [ApiController]
     public class MessagesController : ControllerBase
@@ -59,11 +59,11 @@ namespace ChatingApp.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateMessage(int userId, MessageForCreationDto messageForCreationDto)
         {
-            var sender = await _repo.GetUser(userId);
+            var sender = await _repo.GetUser(userId, false);
             if (sender.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value))
                 return Unauthorized();
             messageForCreationDto.SenderId = userId;
-            var recipient = await _repo.GetUser(messageForCreationDto.RecipientId);
+            var recipient = await _repo.GetUser(messageForCreationDto.RecipientId, false);
             if (recipient == null)
                 return BadRequest("User Could not found");
             var message = _mapper.Map<Message>(messageForCreationDto);

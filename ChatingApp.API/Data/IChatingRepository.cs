@@ -12,7 +12,7 @@ namespace ChatingApp.API.Data
         Task<bool> SaveAll();
         Task<PagedList<User>> GetUsers(UserParams userParams);
         //Task<IEnumerable<User>> GetUsers();
-        Task<User> GetUser(int Id);
+        Task<User> GetUser(int Id, bool isCurrentUser);
         Task<Photo> GetPhoto(int Id);
         Task<Photo> GetMainPhotoForUser(int userId);
         Task<Like> GetLike(int userId, int recipientId);
